@@ -4,13 +4,14 @@ services:
   db:
     container_name: upydb
     image: mariadb:latest
-    restart: "no"
-    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     ports:
       - 3306:3306
     environment:
-      MARIADB_ROOT_PASSWORD: tf4CcEuN3dENXLgs
-      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "no"
-      MARIADB_DATABASE: youpie
-      MARIADB_USER: youpie
-      MARIADB_PASSWORD: tf4CcEuN3dENXLgs
+      MYSQL_ROOT_PASSWORD: tf4CcEuN3dENXLgs
+      MYSQL_ALLOW_EMPTY_ROOT_PASSWORD: "no"
+      MYSQL_DATABASE: youpie
+      MYSQL_USER: youpie
+      MYSQL_PASSWORD: tf4CcEuN3dENXLgs
+    volumes:
+      - ./configs/conf.d:/etc/mysql/conf.d:ro
